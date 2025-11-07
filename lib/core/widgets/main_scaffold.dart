@@ -18,7 +18,7 @@ final List<NavItem> _navItems = <NavItem>[
   const NavItem(label: 'Livros', icon: Icons.book, path: Routes.livros),
   const NavItem(label: 'Busca', icon: Icons.search, path: Routes.busca),
   const NavItem(label: 'Favoritos', icon: Icons.favorite, path: Routes.favoritos),
-  const NavItem(label: 'Ponto', icon: Icons.shuffle, path: Routes.ponto),
+  const NavItem(label: 'Ponto', icon: Icons.casino, path: Routes.ponto),
 ];
 
 class MainScaffold extends StatelessWidget {
