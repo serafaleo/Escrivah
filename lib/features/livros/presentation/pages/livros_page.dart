@@ -33,8 +33,7 @@ class LivrosPage extends StatelessWidget {
               ),
             );
           } else {
-            return const Center(child: Text('Bem-vindo à página de livros!'));
-            // TODO(serafaleo): escolher o que mostrar quando o estado for erro.
+            return Center(child: Text((state as ErroAoCarregarListaDeLivrosState).failure.message));
           }
         },
       ),
