@@ -15,7 +15,7 @@ final class NavItem {
 }
 
 final List<NavItem> _navItems = <NavItem>[
-  const NavItem(label: 'Livros', icon: Icons.book, path: Routes.livros),
+  const NavItem(label: 'Livros', icon: Icons.book, path: Routes.listaLivros),
   const NavItem(label: 'Busca', icon: Icons.search, path: Routes.busca),
   const NavItem(label: 'Favoritos', icon: Icons.favorite, path: Routes.favoritos),
   const NavItem(label: 'Ponto', icon: Icons.casino, path: Routes.ponto),
@@ -28,13 +28,16 @@ class MainScaffold extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final int currentIndex = _calculateCurrentIndex(context);
+    final String title = _navItems[currentIndex].label;
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Escrivah'),
+        title: Text(title),
+        centerTitle: true,
       ),
       body: child,
       bottomNavigationBar: BottomNavigationBar(
-        currentIndex: _calculateCurrentIndex(context),
+        currentIndex: currentIndex,
         type: BottomNavigationBarType.fixed,
         items: _navItems.map((NavItem item) {
           return BottomNavigationBarItem(

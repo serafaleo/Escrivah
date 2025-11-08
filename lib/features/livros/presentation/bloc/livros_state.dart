@@ -9,14 +9,20 @@ final class LivrosInitial extends LivrosState {}
 
 final class LivrosLoadingState extends LivrosState {}
 
+final class LivrosFailedState extends LivrosState {
+  final Failure failure;
+
+  const LivrosFailedState({required this.failure});
+}
+
 final class ListaDeLivrosCarregadaState extends LivrosState {
   final List<Livro> livros;
 
   const ListaDeLivrosCarregadaState({required this.livros});
 }
 
-final class ErroAoCarregarListaDeLivrosState extends LivrosState {
-  final Failure failure;
+final class InformacoesDoLivroCarregadasState extends LivrosState {
+  final Livro livro;
 
-  const ErroAoCarregarListaDeLivrosState({required this.failure});
+  const InformacoesDoLivroCarregadasState({required this.livro});
 }

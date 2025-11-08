@@ -4,8 +4,8 @@ import 'package:escrivah/features/livros/presentation/widgets/livro_list_tile.da
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-class LivrosPage extends StatelessWidget {
-  const LivrosPage({super.key});
+class ListaLivrosPage extends StatelessWidget {
+  const ListaLivrosPage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -14,14 +14,12 @@ class LivrosPage extends StatelessWidget {
       create: (BuildContext context) => LivrosBloc()..add(CarregarListaDeLivrosEvent()),
       child: BlocConsumer<LivrosBloc, LivrosState>(
         listener: (BuildContext context, LivrosState state) {
-          if (state is ErroAoCarregarListaDeLivrosState) {
+          if (state is LivrosFailedState) {
             state.failure.show(context);
           }
         },
         builder: (BuildContext context, LivrosState state) {
-          if (state is LivrosLoadingState) {
-            return const Center(child: CircularProgressIndicator());
-          } else if (state is ListaDeLivrosCarregadaState) {
+          if (state is ListaDeLivrosCarregadaState) {
             return Padding(
               padding: const EdgeInsets.only(left: paddingValue, right: paddingValue, top: paddingValue),
               child: ListView.builder(
@@ -32,9 +30,8 @@ class LivrosPage extends StatelessWidget {
                 },
               ),
             );
-          } else {
-            return Center(child: Text((state as ErroAoCarregarListaDeLivrosState).failure.message));
           }
+          return const Center(child: CircularProgressIndicator());
         },
       ),
     );

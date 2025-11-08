@@ -1,5 +1,7 @@
+import 'package:escrivah/core/constants/routes.dart';
 import 'package:escrivah/features/livros/domain/entities/livro.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 class LivroListTile extends StatelessWidget {
   final Livro livro;
@@ -27,8 +29,7 @@ class LivroListTile extends StatelessWidget {
             style: Theme.of(context).textTheme.bodyMedium!.copyWith(fontStyle: FontStyle.italic, color: Colors.grey[700]),
           ),
           onTap: () {
-            // TODO(serafaleo): ir para livro
-            debugPrint('Book tile tapped');
+            context.push(Routes.livro, extra: livro);
           },
         ),
       ),

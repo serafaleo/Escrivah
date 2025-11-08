@@ -4,4 +4,5 @@ import 'package:fpdart/fpdart.dart';
 
 abstract interface class LivrosRepository {
   Future<Either<Failure, List<Livro>>> carregarListaDeLivros();
+  Future<Either<Failure, Livro>> carregarInformacoesDoLivro(Livro livro);
 }

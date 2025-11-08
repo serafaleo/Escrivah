@@ -18,4 +18,14 @@ final class LivrosRepositoryImpl implements LivrosRepository {
       return Left<Failure, List<Livro>>(Failure('Erro ao carregar a lista de livros: $e'));
     }
   }
+
+  @override
+  Future<Either<Failure, Livro>> carregarInformacoesDoLivro(Livro livro) async {
+    try {
+      final Livro livroComInformacoes = await sl<EscrivaPortalDataSource>().carregarInformacoesDoLivro(livro);
+      return Right<Failure, Livro>(livroComInformacoes);
+    } catch (e) {
+      return Left<Failure, Livro>(Failure('Erro ao carregar as informações do livro: $e'));
+    }
+  }
 }

@@ -1,6 +1,9 @@
 class Livro {
   final String titulo;
   final String descricao;
+  final String uri;
 
-  Livro({required this.titulo, required this.descricao});
+  String? descricaoCompleta;
+
+  Livro({required this.titulo, required this.descricao, required this.uri});
 }
